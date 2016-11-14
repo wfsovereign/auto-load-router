@@ -1,0 +1,20 @@
+{
+  "name": "auto-load-router",
+  "version": "1.0.0",
+  "description": "auto load router",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "keywords": [
+    "auto",
+    "router",
+    "koa"
+  ],
+  "author": "wfsovereign",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "1.2.4"
+  }
+}
