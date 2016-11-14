@@ -1,4 +1,5 @@
 var koa = require('koa');
+var middleware = require('./middleware');
 var debug = require('debug')('wfsovereign-server');
 
 function Server(option) {
@@ -15,20 +16,10 @@ Server.prototype.start = function () {
   var port = process.env.PORT || this.opts.port || 3000;
   this.keys = [this.opts.keys.main];
   this.proxy = true;
-  this.use(function *(next) {
-    var start = new Date;
-    yield next;
-    var ms = new Date - start;
-    this.set('X-Response-Time', ms + 'ms');
-  });
-
-  this.use(function *(next) {
-    var start = new Date;
-    yield next;
-    var ms = new Date - start;
-    console.log('%s %s - %s', this.method, this.url, ms);
-  });
-
+  this.use(middleware.accessAllow());
+  this.use(middleware.responseTime());
+  this.use(middleware.bodyParser());
+  this.use(middleware.logger());
   this.use(function *() {
     this.body = 'Hello World';
   });
