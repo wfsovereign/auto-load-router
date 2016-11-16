@@ -20,12 +20,17 @@ Server.prototype.start = function () {
   this.use(middleware.responseTime());
   this.use(middleware.bodyParser());
   this.use(middleware.logger());
-  this.use(function *() {
-    this.body = 'Hello World';
-  });
+  this.initRoutes();
 
   this.listen(port, function () {
     debug('server start up in ' + (port));
+  });
+};
+
+Server.prototype.initRoutes = function () {
+  var routers = require('./routes/index')();
+  routers.forEach(ele => {
+    this.use(ele.middleware());
   });
 };
 

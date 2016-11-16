@@ -1,5 +1,5 @@
 process.env.DEBUG = 'wfsovereign-*';
-GLOBAL.rootDir = __dirname;
+global.rootDir = __dirname;
 
 var config = require('./configs/index');
 var Server = require('./server');
