@@ -13,7 +13,7 @@ module.exports = function () {
 
   const routersName = Object.keys(routerPrefix);
   routersName.forEach(ele => {
-    router.push(new R({prefix: routerPrefix[ele]}));
+    router.push(new R({ prefix: routerPrefix[ele] }));
     routes.push(fs.readdirSync(path.join(__dirname, ele)));
   });
   routersName.forEach((ele, index) => {
