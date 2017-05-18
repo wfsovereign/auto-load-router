@@ -36,18 +36,16 @@ router: {
 
 prefix用于配置路由自动挂载。prefix中的**key**是根目录下routes中的目录结构，
 
-> 
-routes
-├── admin
-│   └── user.js
-├── statistics
-│   └── read.js
-├── web
-│   └── order.js
-├── wechat
-│   └── notification.js
-└── index.js
->      
+    routes
+    ├── admin
+    │   └── user.js
+    ├── statistics
+    │   └── read.js
+    ├── web
+    │   └── order.js
+    ├── wechat
+    │   └── notification.js
+    └── index.js
 
 而**key**对应的value值则是对应路由的前缀，比如这里的admin，
 意思就是admin目录下的所有路由以 /api/admin 打头，再看user.js文件中的具体路由
