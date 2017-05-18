@@ -1,5 +1,5 @@
 process.env.DEBUG = 'wfsovereign-*';
-var should = require('should'), request = require('supertest')('http://127.0.0.1:3000');
+const should = require('should'), request = require('supertest')('http://127.0.0.1:3000');
 
 describe('admin user interface', () => {
 

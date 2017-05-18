@@ -1,4 +1,4 @@
-var User = require('../../controller/admin/user');
+const User = require('../../controller/admin/user');
 
 module.exports = function (R) {
   R.get('/users', User.list);

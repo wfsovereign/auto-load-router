@@ -1,17 +1,17 @@
-var R = require('koa-router');
-var fs = require('fs');
-var path = require('path');
-var config = require(rootDir + '/configs');
-var debug = require('debug')('wfsovereign-routes-index');
-var isReady = false;
-var routerCache = [];
+const R = require('koa-router');
+const fs = require('fs');
+const path = require('path');
+const config = require(rootDir + '/configs');
+const debug = require('debug')('wfsovereign-routes-index');
+let routerCache = [];
+let isReady = false;
 
 module.exports = function () {
   if (isReady) return routerCache;
   isReady = true;
-  var router = [], routes = [], routerPrefix = config.router.prefix;
+  const router = [], routes = [], routerPrefix = config.router.prefix;
 
-  var routersName = Object.keys(routerPrefix);
+  const routersName = Object.keys(routerPrefix);
   routersName.forEach(ele => {
     router.push(new R({prefix: routerPrefix[ele]}));
     routes.push(fs.readdirSync(path.join(__dirname, ele)));
@@ -27,7 +27,7 @@ module.exports = function () {
 
 function loadRouter(routes, router, middle) {
   routes.forEach((file) => {
-    var currentPath = path.join(__dirname, middle, file);
+    const currentPath = path.join(__dirname, middle, file);
     if (currentPath.indexOf('.') > 0) require(currentPath)(router);
     else loadRouter(fs.readdirSync(currentPath), router, (middle + '/' + file));
   });

@@ -1,10 +1,10 @@
 process.env.DEBUG = 'wfsovereign-*';
 global.rootDir = __dirname;
 
-var config = require('./configs/index');
-var Server = require('./server');
-var server = new Server(config);
-var debug = require('debug')('wfsovereign-app');
+const config = require('./configs/index');
+const Server = require('./server');
+const server = new Server(config);
+const debug = require('debug')('wfsovereign-app');
 
 server.start();
 

@@ -1,6 +1,6 @@
-var koa = require('koa');
-var middleware = require('./middleware');
-var debug = require('debug')('wfsovereign-server');
+const koa = require('koa');
+const middleware = require('./middleware');
+const debug = require('debug')('wfsovereign-server');
 
 function Server(option) {
   this.opts = option || {
@@ -13,7 +13,7 @@ function Server(option) {
 Server.prototype = koa();
 
 Server.prototype.start = function () {
-  var port = process.env.PORT || this.opts.port || 3000;
+  const port = process.env.PORT || this.opts.port || 3000;
   this.keys = [this.opts.keys.main];
   this.proxy = true;
   this.use(middleware.accessAllow());
@@ -28,7 +28,7 @@ Server.prototype.start = function () {
 };
 
 Server.prototype.initRoutes = function () {
-  var routers = require('./routes/index')();
+  const routers = require('./routes/index')();
   routers.forEach(ele => {
     this.use(ele.middleware());
   });

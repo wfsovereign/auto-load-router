@@ -1,4 +1,4 @@
-var cors = require('koa-cors');
+const cors = require('koa-cors');
 
 module.exports = function (access) {
   return cors(access || {
